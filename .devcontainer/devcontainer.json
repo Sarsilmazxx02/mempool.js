@@ -1,0 +1,6 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": {
+  }
+}
+"ghcr.io/brokenpip3/devcontainers-bats/bats-libs:0": {}
