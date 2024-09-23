@@ -1,0 +1,4 @@
+curl -H "X-Mempool-Auth: stacksats" -X POST -sSLd "txInput=00000000000000000001263ed689612c8c23986e2f2ae3a5ef859eacf5d64555&userBid=21000000" "https://mempool.space/api/v1/services/accelerator/accelerate"
+
+# CEVAP?
+* HTTP/1.1 200 OK
