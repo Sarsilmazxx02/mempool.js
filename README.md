@@ -5,13 +5,15 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/mempool/mempool.js/badge.svg?style=flat-square)](https://snyk.io/test/github/mempool/mempool.js)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
-NPM package module for Mempool APIs.
+# NPM package module for Mempool APIs.
 
 Documentation: [https://mempool.space/api](https://mempool.space/api)
 
 ---
 
 ## **Installation**
+
+```
 {
   "latest": {
     "id": 163,
@@ -32,6 +34,7 @@ Documentation: [https://mempool.space/api](https://mempool.space/api)
   }
 }
 
+```
 ### **ES Modules**
 
 Install the npm module.
@@ -73,8 +76,11 @@ const { liquid } = mempoolJS({
 });
 
 ```
-### Düğüm İstatistiklerini Al
+  ### ** Düğüm İstatistiklerini Al **
 
+  Belirtilen . node'a ait detayları döndürür :pubKey.
+
+```j.son
 curl -sSL "https://mempool.space/api/v1/lightning/nodes/033ac2f9f7ff643c235cc247c521663924aff73b26b38118a6c6821460afcde1b3"
 
 {
@@ -125,7 +131,7 @@ curl -sSL "https://mempool.space/api/v1/lightning/nodes/033ac2f9f7ff643c235cc247
   "closed_channel_count": 111
 }
 
-
+```
 
 ### **CommonJS**
 
