@@ -12,6 +12,25 @@ Documentation: [https://mempool.space/api](https://mempool.space/api)
 ---
 
 ## **Installation**
+{
+  "latest": {
+    "id": 163,
+    "added": "2022-08-30T00:00:00.000Z",
+    "channel_count": 81690,
+    "node_count": 15851,
+    "total_capacity": 460820222344,
+    "tor_nodes": 11455,
+    "clearnet_nodes": 2305,
+    "unannounced_nodes": 974,
+    "avg_capacity": 5641085,
+    "avg_fee_rate": 497,
+    "avg_base_fee_mtokens": 915,
+    "med_capacity": 1500000,
+    "med_fee_rate": 40,
+    "med_base_fee_mtokens": 100,
+    "clearnet_tor_nodes": 1117
+  }
+}
 
 ### **ES Modules**
 
@@ -52,7 +71,61 @@ const { liquid } = mempoolJS({
   hostname: 'liquid.network',
   network: 'liquid' // 'liquid' | 'liquidtestnet'
 });
+
 ```
+### Düğüm İstatistiklerini Al
+
+curl -sSL "https://mempool.space/api/v1/lightning/nodes/033ac2f9f7ff643c235cc247c521663924aff73b26b38118a6c6821460afcde1b3"
+
+{
+  "public_key": "033ac2f9f7ff643c235cc247c521663924aff73b26b38118a6c6821460afcde1b3",
+  "alias": "Red.de.Rayos",
+  "first_seen": 1521504055,
+  "updated_at": 1661869523,
+  "color": "#68f442",
+  "sockets": "84.44.203.181:9735",
+  "as_number": 8422,
+  "city_id": 2886242,
+  "country_id": 2921044,
+  "subdivision_id": 2861876,
+  "longitude": 6.9489,
+  "latitude": 50.9298,
+  "iso_code": "DE",
+  "as_organization": "NetCologne GmbH",
+  "city": {
+    "de": "Köln",
+    "en": "Cologne",
+    "es": "Colonia",
+    "fr": "Cologne",
+    "ja": "ケルン",
+    "pt-BR": "Colônia",
+    "ru": "Кёльн",
+    "zh-CN": "科隆"
+  },
+  "country": {
+    "de": "Deutschland",
+    "en": "Germany",
+    "es": "Alemania",
+    "fr": "Allemagne",
+    "ja": "ドイツ連邦共和国",
+    "pt-BR": "Alemanha",
+    "ru": "Германия",
+    "zh-CN": "德国"
+  },
+  "subdivision": {
+    "de": "Nordrhein-Westfalen",
+    "en": "North Rhine-Westphalia",
+    "es": "Renania del Norte-Westfalia",
+    "fr": "Rhénanie du Nord-Westphalie",
+    "ru": "Северный Рейн-Вестфалия"
+  },
+  "active_channel_count": 55,
+  "capacity": "31505027",
+  "opened_channel_count": 55,
+  "closed_channel_count": 111
+}
+
+
 
 ### **CommonJS**
 
