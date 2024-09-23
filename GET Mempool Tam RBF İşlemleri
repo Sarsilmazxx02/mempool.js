@@ -1,0 +1,35 @@
+# Tam RBF zincirinin parçası olan mempool işlemlerinin listesini döndürür.
+kıvrımlı
+  curl -sSL "https://mempool.space/api/v1/fullrbf/replacements"
+  [
+  {
+    tx: {
+      txid: "25e2bfaf0e0821e5cb71f11e460b2f71e1d5a3755015de42544afa5fbad6d443",
+      fee: 24436,
+      vsize: 297.75,
+      value: 273418,
+      rate: 82.0688497061293,
+      rbf: false,
+      fullRbf: true
+    },
+    time: 1703409882,
+    fullRbf: true,
+    replaces: [
+      {
+        tx: {
+          txid: "07d501e8ad4a25f07f3ced0a6102741720f710765e6fdb2eb966ba0df657997a",
+          fee: 24138,
+          vsize: 297.75,
+          value: 273716,
+          rate: 81.06801007556675,
+          rbf: false
+        },
+        time: 1703409853,
+        interval: 29,
+        fullRbf: true,
+        replaces: []
+      }
+    ]
+  },
+  ...
+]
