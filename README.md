@@ -19,10 +19,11 @@ Install the npm module.
 
 ```bash
 # npm
-$ npm install @mempool/mempool.js --save
+npm install @mempool/mempool.js --save
 
 # yarn
-$ yarn add @mempool/mempool.js
+yarn add @mempool/mempool.js
+
 ```
 
 Or if you're not into package management, just [download a ZIP](https://github.com/mempool/mempool.js/archive/refs/heads/main.zip) file.
@@ -30,28 +31,23 @@ Or if you're not into package management, just [download a ZIP](https://github.c
 Import the module.
 
 ```js
-import mempoolJS from '@mempool/mempool.js';
+import mempoolJS from "@mempool/mempool.js";
 
-// default mempool.space endpointsconst { bitcoin, liquid } = mempoolJS();
+const init = async () => {
+  
+  const { bitcoin: { transactions } } = mempoolJS({
+    hostname: 'mempool.space'
+  });
 
-// (optional) your custom endpoints
-const { bitcoin } = mempoolJS({
-  protocol: 'https', // optional, defaults to http for localhost, otherwise https
-  hostname: 'mempool.space',
-  network: 'testnet' // 'signet' | 'testnet' | 'mainnet',
-  config: { // optional axios request config to add to requests
-    headers: {
-      authorization: 'Basic auth'
-    }
-  }
-});
+  const txHex = '0200000001fd5b5fcd1cb066c27cfc9fda5428b9be850b81ac440ea51f1ddba2f987189ac1010000008a4730440220686a40e9d2dbffeab4ca1ff66341d06a17806767f12a1fc4f55740a7af24c6b5022049dd3c9a85ac6c51fecd5f4baff7782a518781bbdd94453c8383755e24ba755c01410436d554adf4a3eb03a317c77aa4020a7bba62999df633bba0ea8f83f48b9e01b0861d3b3c796840f982ee6b14c3c4b7ad04fcfcc3774f81bff9aaf52a15751fedfdffffff02416c00000000000017a914bc791b2afdfe1e1b5650864a9297b20d74c61f4787d71d0000000000001976a9140a59837ccd4df25adc31cdad39be6a8d97557ed688ac00000000';
 
-// Liquid API
-const { liquid } = mempoolJS({
-  protocol: 'https', // optional, defaults to http for localhost, otherwise https
-  hostname: 'liquid.network',
-  network: 'liquid' // 'liquid' | 'liquidtestnet'
-});
+  const txid = await transactions.postTx({ txHex });
+  console.log(txid);
+          
+};
+
+init();
+
 ```
 
 ### **CommonJS**
@@ -65,22 +61,32 @@ Include the line below in the `head` tag of your html file.
 Call `mempoolJS()` function to access the API methods.
 
 ```js
-// default mempool.space endpoints
-const { bitcoin } = mempoolJS();
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://mempool.space/mempool.js"></script>
+    <script>
+      const init = async () => {
+        
+        const { bitcoin: { transactions } } = mempoolJS({
+          hostname: 'mempool.space'
+        });
 
-// (optional) your custom endpoints
-const { bitcoin } = mempoolJS({
-  protocol: 'https', // optional, defaults to http for localhost, otherwise https
-  hostname: 'mempool.space',
-  network: 'testnet', // 'signet' | 'testnet' | 'mainnet'
-});
+        const txHex = '0200000001fd5b5fcd1cb066c27cfc9fda5428b9be850b81ac440ea51f1ddba2f987189ac1010000008a4730440220686a40e9d2dbffeab4ca1ff66341d06a17806767f12a1fc4f55740a7af24c6b5022049dd3c9a85ac6c51fecd5f4baff7782a518781bbdd94453c8383755e24ba755c01410436d554adf4a3eb03a317c77aa4020a7bba62999df633bba0ea8f83f48b9e01b0861d3b3c796840f982ee6b14c3c4b7ad04fcfcc3774f81bff9aaf52a15751fedfdffffff02416c00000000000017a914bc791b2afdfe1e1b5650864a9297b20d74c61f4787d71d0000000000001976a9140a59837ccd4df25adc31cdad39be6a8d97557ed688ac00000000';
 
-// Liquid API
-const { liquid } = mempoolJS({
-  protocol: 'https', // optional, defaults to http for localhost, otherwise https
-  hostname: 'liquid.network',
-  network: 'liquid' // 'liquid' | 'liquidtestnet'
-});
+        const txid = await transactions.postTx({ txHex });
+
+        document.getElementById("result").textContent = JSON.stringify(txid, undefined, 2);
+        
+      };
+      init();
+    </script>
+  </head>
+  <body>
+    <pre id="result"></pre>
+  </body>
+</html>
+
 ```
 
 ---
